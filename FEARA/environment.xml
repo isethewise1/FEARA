@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Environment>
+  <EnvironmentObjects>
+    <EnvironmentObject>
+      <name>stove</name>
+      <texturename>stove</texturename>
+      <locationx>0</locationx>
+      <locationy>50</locationy>
+      <scale>0.2</scale>
+    </EnvironmentObject>
+    
+    <EnvironmentObject>
+      <name>fridge</name>
+      <texturename>fridge</texturename>
+      <locationx>0</locationx>
+      <locationy>250</locationy>
+      <scale>0.2</scale>
+    </EnvironmentObject>
+    
+    <EnvironmentObject>
+      <name>counter</name>
+      <texturename>counter</texturename>
+      <locationx>250</locationx>
+      <locationy>0</locationy>
+      <scale>1</scale>
+    </EnvironmentObject>
+    
+    <EnvironmentObject>
+      <name>cake</name>
+      <texturename>cake</texturename>
+      <locationx>-50</locationx>
+      <locationy>-50</locationy>
+      <scale>1</scale>
+    </EnvironmentObject>
+    
+    <EnvironmentObject>
+      <name>dishes</name>
+      <texturename>dishes</texturename>
+      <locationx>-50</locationx>
+      <locationy>-50</locationy>
+      <scale>1</scale>
+    </EnvironmentObject>
+
+    <EnvironmentObject>
+      <name>ingredients</name>
+      <texturename>ingredients</texturename>
+      <locationx>-50</locationx>
+      <locationy>-50</locationy>
+      <scale>1</scale>
+    </EnvironmentObject>
+
+    <EnvironmentObject>
+      <name>sink</name>
+      <texturename>sink</texturename>
+      <locationx>450</locationx>
+      <locationy>350</locationy>
+      <scale>1</scale>
+    </EnvironmentObject>
+
+    <EnvironmentObject>
+      <name>bed</name>
+      <texturename>bed</texturename>
+      <locationx>450</locationx>
+      <locationy>0</locationy>
+      <scale>0.7</scale>
+    </EnvironmentObject>
+    
+    <EnvironmentObject>
+      <name>tv</name>
+      <texturename>tv</texturename>
+      <locationx>450</locationx>
+      <locationy>175</locationy>
+      <scale>1.7</scale>
+    </EnvironmentObject>
+    
+    <EnvironmentObject>
+      <name>mat</name>
+      <texturename>mat</texturename>
+      <locationx>250</locationx>
+      <locationy>250</locationy>
+      <scale>1</scale>
+    </EnvironmentObject>
+
+    <EnvironmentObject>
+      <name>pizza</name>
+      <texturename>pizza</texturename>
+      <locationx>-50</locationx>
+      <locationy>-50</locationy>
+      <scale>1.7</scale>
+    </EnvironmentObject>
+
+    <EnvironmentObject>
+      <name>door</name>
+      <texturename>door</texturename>
+      <locationx>150</locationx>
+      <locationy>0</locationy>
+      <scale>0.1</scale>
+    </EnvironmentObject>
+
+    <EnvironmentObject>
+      <name>phone</name>
+      <texturename>phone</texturename>
+      <locationx>150</locationx>
+      <locationy>350</locationy>
+      <scale>0.1</scale>
+    </EnvironmentObject>
+  </EnvironmentObjects>
+  
+  <Characters>
+    <Character>
+      <name>villager</name>
+      <texturename>villager</texturename>
+      <locationx>150</locationx>
+      <locationy>150</locationy>
+      <scale>1</scale>
+
+      <state>
+        <features>
+          <feature>
+            <name>hungry</name>
+            <value>50</value>
+          </feature>
+          <feature>
+            <name>tired</name>
+            <value>20</value>
+          </feature>
+          <feature>
+            <name>bored</name>
+            <value>0</value>
+          </feature>
+          <feature>
+            <name>money</name>
+            <value>50</value>
+          </feature>
+          <feature>
+            <name>clean</name>
+            <value>true</value>
+          </feature>
+          <feature>
+            <name>has ingredients</name>
+            <value>false</value>
+          </feature>
+          <feature>
+            <name>has food</name>
+            <value>false</value>
+          </feature>
+          <feature>
+            <name>food ordered</name>
+            <value>false</value>
+          </feature>
+        </features>
+      </state>
+      
+      <AI>
+        <actions>
+          <action>
+            <name>default</name>
+            <precondition>
+              <state>
+                <features>
+                  
+                </features>
+              </state>
+            </precondition>
+            <result>
+              <state>
+                <features>
+                  
+                </features>
+              </state>
+            </result>
+            <moveTo>mat</moveTo>
+            <add>null</add>
+            <remove>false</remove>
+            <cost>1.0</cost>
+          </action>
+          <action>
+            <name>get ingredients</name>
+            <precondition>
+              <state>
+                <features>
+                  <feature>
+                    <name>hungry</name>
+                    <value>+50</value>
+                  </feature>
+                  <feature>
+                    <name>has ingredients</name>
+                    <value>false</value>
+                  </feature>
+                  <feature>
+                    <name>food ordered</name>
+                    <value>false</value>
+                  </feature>
+                  <feature>
+                    <name>has food</name>
+                    <value>false</value>
+                  </feature>
+                </features>
+              </state>
+            </precondition>
+            <result>
+              <state>
+                <features>
+                  <feature>
+                    <name>has ingredients</name>
+                    <value>true</value>
+                  </feature>
+                </features>
+              </state>
+            </result>
+            <moveTo>fridge</moveTo>
+            <add>ingredients</add>
+            <remove>false</remove>
+            <cost>1.0</cost>
+          </action>
+
+          <action>
+            <name>bake cake</name>
+            <precondition>
+              <state>
+                <features>
+                  <feature>
+                    <name>hungry</name>
+                    <value>+50</value>
+                  </feature>
+                  <feature>
+                    <name>has ingredients</name>
+                    <value>true</value>
+                  </feature>
+                  <feature>
+                    <name>food ordered</name>
+                    <value>false</value>
+                  </feature>
+                  <feature>
+                    <name>has food</name>
+                    <value>false</value>
+                  </feature>
+                </features>
+              </state>
+            </precondition>
+            <result>
+              <state>
+                <features>
+                  <feature>
+                    <name>has ingredients</name>
+                    <value>false</value>
+                  </feature>
+                  <feature>
+                    <name>has food</name>
+                    <value>true</value>
+                  </feature>
+                </features>
+              </state>
+            </result>
+            <moveTo>stove</moveTo>
+            <add>cake</add>
+            <remove>true</remove>
+            <cost>4.0</cost>
+          </action>
+
+          <action>
+            <name>eat food</name>
+            <precondition>
+              <state>
+                <features>
+                  <feature>
+                    <name>hungry</name>
+                    <value>+50</value>
+                  </feature>
+                  <feature>
+                    <name>has food</name>
+                    <value>true</value>
+                  </feature>
+                </features>
+              </state>
+            </precondition>
+            <result>
+              <state>
+                <features>
+                  <feature>
+                    <name>hungry</name>
+                    <value>0</value>
+                  </feature>
+                  <feature>
+                    <name>has food</name>
+                    <value>false</value>
+                  </feature>
+                  <feature>
+                    <name>clean</name>
+                    <value>false</value>
+                  </feature>
+                </features>
+              </state>
+            </result>
+            <moveTo>counter</moveTo>
+            <add>dishes</add>
+            <remove>true</remove>
+            <cost>1.0</cost>
+          </action>
+
+          <action>
+            <name>clean dishes</name>
+            <precondition>
+              <state>
+                <features>
+                  <feature>
+                    <name>clean</name>
+                    <value>false</value>
+                  </feature>
+                </features>
+              </state>
+            </precondition>
+            <result>
+              <state>
+                <features>
+                  <feature>
+                    <name>clean</name>
+                    <value>true</value>
+                  </feature>
+                </features>
+              </state>
+            </result>
+            <moveTo>sink</moveTo>
+            <add>null</add>
+            <remove>true</remove>
+            <cost>1.0</cost>
+          </action>
+
+          <action>
+            <name>go to sleep</name>
+            <precondition>
+              <state>
+                <features>
+                  <feature>
+                    <name>tired</name>
+                    <value>+60</value>
+                  </feature>
+                  <feature>
+                    <name>clean</name>
+                    <value>true</value>
+                  </feature>
+                </features>
+              </state>
+            </precondition>
+            <result>
+              <state>
+                <features>
+                  <feature>
+                    <name>tired</name>
+                    <value>0</value>
+                  </feature>
+                </features>
+              </state>
+            </result>
+            <moveTo>bed</moveTo>
+            <add>null</add>
+            <remove>false</remove>
+            <cost>1.0</cost>
+          </action>
+
+          <action>
+            <name>watch tv</name>
+            <precondition>
+              <state>
+                <features>
+                  <feature>
+                    <name>bored</name>
+                    <value>+20</value>
+                  </feature>
+                </features>
+              </state>
+            </precondition>
+            <result>
+              <state>
+                <features>
+                  <feature>
+                    <name>bored</name>
+                    <value>0</value>
+                  </feature>
+                </features>
+              </state>
+            </result>
+            <moveTo>tv</moveTo>
+            <add>null</add>
+            <remove>false</remove>
+            <cost>1.0</cost>
+          </action>
+
+          <action>
+            <name>order pizza</name>
+            <precondition>
+              <state>
+                <features>
+                  <feature>
+                    <name>hungry</name>
+                    <value>+50</value>
+                  </feature>
+                  <feature>
+                    <name>money</name>
+                    <value>+25</value>
+                  </feature>
+                  <feature>
+                    <name>has ingredients</name>
+                    <value>false</value>
+                  </feature>
+                  <feature>
+                    <name>food ordered</name>
+                    <value>false</value>
+                  </feature>
+                  <feature>
+                    <name>has food</name>
+                    <value>false</value>
+                  </feature>
+                </features>
+              </state>
+            </precondition>
+            <result>
+              <state>
+                <features>
+                  <feature>
+                    <name>food ordered</name>
+                    <value>true</value>
+                  </feature>
+                </features>
+              </state>
+            </result>
+            <moveTo>phone</moveTo>
+            <add>null</add>
+            <remove>false</remove>
+            <cost>1.0</cost>
+          </action>
+
+          <action>
+            <name>get pizza</name>
+            <precondition>
+              <state>
+                <features>
+                  <feature>
+                    <name>hungry</name>
+                    <value>+50</value>
+                  </feature>
+                  <feature>
+                    <name>money</name>
+                    <value>+100</value>
+                  </feature>
+                  <feature>
+                    <name>food ordered</name>
+                    <value>true</value>
+                  </feature>
+                  <feature>
+                    <name>has food</name>
+                    <value>false</value>
+                  </feature>
+                </features>
+              </state>
+            </precondition>
+            <result>
+              <state>
+                <features>
+                  <feature>
+                    <name>food ordered</name>
+                    <value>false</value>
+                  </feature>
+                  <feature>
+                    <name>has food</name>
+                    <value>true</value>
+                  </feature>
+                  <feature>
+                    <name>money</name>
+                    <value>0</value>
+                  </feature>
+                </features>
+              </state>
+            </result>
+            <moveTo>door</moveTo>
+            <add>pizza</add>
+            <remove>false</remove>
+            <cost>1.0</cost>
+          </action>
+
+        </actions>
+        <goals>
+
+          <goal>
+            <name>Sleep</name>
+            <goalState>
+              <state>
+                <features>
+                  <feature>
+                    <name>tired</name>
+                    <value>0</value>
+                  </feature>
+                </features>
+              </state>
+            </goalState>
+            <weightFeature>tired</weightFeature>
+            <weightLimit>50</weightLimit>
+            <weight>0.5</weight>
+          </goal>
+
+          <goal>
+            <name>Eat</name>
+            <goalState>
+              <state>
+                <features>
+                  <feature>
+                    <name>hungry</name>
+                    <value>0</value>
+                  </feature>
+                  <feature>
+                    <name>clean</name>
+                    <value>true</value>
+                  </feature>
+                </features>
+              </state>
+            </goalState>
+            <weightFeature>hungry</weightFeature>
+            <weightLimit>50</weightLimit>
+            <weight>0.7</weight>
+          </goal>
+
+          <goal>
+            <name>Entertain</name>
+            <goalState>
+              <state>
+                <features>
+                  <feature>
+                    <name>bored</name>
+                    <value>0</value>
+                  </feature>
+                </features>
+              </state>
+            </goalState>
+            <weightFeature>bored</weightFeature>
+            <weightLimit>50</weightLimit>
+            <weight>0.3</weight>
+          </goal>
+
+        </goals>
+      </AI>
+    </Character>
+  </Characters>
+  
+  <AIValues>
+    <stateFeatures>
+      <stateFeature>clean</stateFeature>
+      <stateFeature>hungry</stateFeature>
+      <stateFeature>tired</stateFeature>
+      <stateFeature>bored</stateFeature>
+      <stateFeature>money</stateFeature>
+      <stateFeature>has ingredients</stateFeature>
+      <stateFeature>has food</stateFeature>
+      <stateFeature>food ordered</stateFeature>
+    </stateFeatures>
+  </AIValues>
+</Environment>
